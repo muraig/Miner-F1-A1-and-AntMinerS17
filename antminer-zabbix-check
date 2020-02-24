@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -o errexit
+set -o nounset
+
+ADDRESS=$1
+PORT=$2
+CGMINER_COMMAND=$3
+ITEM=$4
+
+# https://github.com/ckolivas/cgminer/blob/master/API-README
+
+COMMAND="{\"command\":\"$CGMINER_COMMAND\"}"
+RET=`echo -n $COMMAND | nc $ADDRESS $PORT | sed 's/}{/},{/' | sed 's/\x0//g'`
+
+# "S" -- Success
+echo $RET | jq '.STATUS[0].STATUS' | grep -q 'S'
+
+echo $RET | jq ".${CGMINER_COMMAND^^}[1][\"${ITEM}\"]"
