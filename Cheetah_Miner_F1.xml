@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.4</version>
-    <date>2020-02-24T09:10:23Z</date>
+    <date>2020-02-24T12:54:48Z</date>
     <groups>
         <group>
             <name>Mining</name>
@@ -26,7 +26,6 @@
                     <name>Temp ASC 0</name>
                     <type>EXTERNAL</type>
                     <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;devs&quot;, &quot;Temperature&quot;, &quot;0&quot;]</key>
-                    <delay>60</delay>
                     <history>60d</history>
                     <trends>60d</trends>
                     <units>°C</units>
@@ -40,7 +39,6 @@
                     <name>Temp ASC 1</name>
                     <type>EXTERNAL</type>
                     <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;devs&quot;, &quot;Temperature&quot;, &quot;1&quot;]</key>
-                    <delay>60</delay>
                     <history>60d</history>
                     <trends>60d</trends>
                     <units>°C</units>
@@ -54,7 +52,6 @@
                     <name>Temp ASC 2</name>
                     <type>EXTERNAL</type>
                     <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;devs&quot;, &quot;Temperature&quot;, &quot;2&quot;]</key>
-                    <delay>60</delay>
                     <history>60d</history>
                     <trends>60d</trends>
                     <units>°C</units>
@@ -68,7 +65,6 @@
                     <name>Temp ASC 3</name>
                     <type>EXTERNAL</type>
                     <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;devs&quot;, &quot;Temperature&quot;, &quot;3&quot;]</key>
-                    <delay>60</delay>
                     <history>60d</history>
                     <trends>60d</trends>
                     <units>°C</units>
@@ -82,7 +78,6 @@
                     <name>Fan0 rpm</name>
                     <type>EXTERNAL</type>
                     <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, &quot;Fan0 rpm&quot;, &quot;0&quot;]</key>
-                    <delay>60</delay>
                     <history>60d</history>
                     <trends>60d</trends>
                     <units>rpm</units>
@@ -103,7 +98,6 @@
                     <name>Fan1 rpm</name>
                     <type>EXTERNAL</type>
                     <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, &quot;Fan1 rpm&quot;, &quot;0&quot;]</key>
-                    <delay>60</delay>
                     <history>60d</history>
                     <trends>60d</trends>
                     <units>rpm</units>
@@ -124,7 +118,6 @@
                     <name>Chip work chain 1</name>
                     <type>EXTERNAL</type>
                     <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, &quot;Num active chips&quot;, &quot;0&quot;]</key>
-                    <delay>30s</delay>
                     <history>60d</history>
                     <trends>60d</trends>
                     <applications>
@@ -137,7 +130,6 @@
                     <name>Chip work chain 2</name>
                     <type>EXTERNAL</type>
                     <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, &quot;Num active chips&quot;, &quot;1&quot;]</key>
-                    <delay>30s</delay>
                     <history>60d</history>
                     <trends>60d</trends>
                     <applications>
@@ -150,7 +142,6 @@
                     <name>Chip work chain 3</name>
                     <type>EXTERNAL</type>
                     <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, &quot;Num active chips&quot;, &quot;2&quot;]</key>
-                    <delay>30s</delay>
                     <history>60d</history>
                     <trends>60d</trends>
                     <applications>
@@ -163,7 +154,6 @@
                     <name>Chip work chain 4</name>
                     <type>EXTERNAL</type>
                     <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, &quot;Num active chips&quot;, &quot;3&quot;]</key>
-                    <delay>30s</delay>
                     <history>60d</history>
                     <trends>60d</trends>
                     <applications>
@@ -176,7 +166,6 @@
                     <name>TH/s (RT)</name>
                     <type>EXTERNAL</type>
                     <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;summary&quot;, &quot;MHS av&quot;, &quot;0&quot;]</key>
-                    <delay>60</delay>
                     <history>60d</history>
                     <trends>60d</trends>
                     <units>TH/s</units>
@@ -208,10 +197,10 @@
                     <name>Model</name>
                     <type>EXTERNAL</type>
                     <key>antminer-zabbix-check-model-curl[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;minerInfo&quot;, &quot;model&quot;]</key>
-                    <delay>60</delay>
                     <history>60d</history>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
+                    <description>Названия моделей майнеров</description>
                     <inventory_link>MODEL</inventory_link>
                     <applications>
                         <application>
@@ -223,7 +212,6 @@
                     <name>User pools</name>
                     <type>EXTERNAL</type>
                     <key>antminer-zabbix-check-pool[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;pools&quot;, &quot;User&quot;]</key>
-                    <delay>60</delay>
                     <history>60d</history>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
@@ -244,7 +232,7 @@
             <screens>
                 <screen>
                     <name>Mining</name>
-                    <hsize>3</hsize>
+                    <hsize>4</hsize>
                     <vsize>1</vsize>
                     <screen_items>
                         <screen_item>
@@ -256,7 +244,7 @@
                             </resource>
                             <width>500</width>
                             <height>100</height>
-                            <x>2</x>
+                            <x>3</x>
                             <y>0</y>
                             <colspan>1</colspan>
                             <rowspan>1</rowspan>
@@ -304,6 +292,26 @@
     </triggers>
     <graphs>
         <graph>
+            <name>Fan F1</name>
+            <graph_items>
+                <graph_item>
+                    <color>199C0D</color>
+                    <item>
+                        <host>Cheetah Miner F1</host>
+                        <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, &quot;Fan0 rpm&quot;, &quot;0&quot;]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>F63100</color>
+                    <item>
+                        <host>Cheetah Miner F1</host>
+                        <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, &quot;Fan1 rpm&quot;, &quot;0&quot;]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
             <name>GH/S (RT)</name>
             <graph_items>
                 <graph_item>
@@ -311,6 +319,42 @@
                     <item>
                         <host>Cheetah Miner F1</host>
                         <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;summary&quot;, &quot;MHS av&quot;, &quot;0&quot;]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Temp F1</name>
+            <graph_items>
+                <graph_item>
+                    <color>199C0D</color>
+                    <item>
+                        <host>Cheetah Miner F1</host>
+                        <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;devs&quot;, &quot;Temperature&quot;, &quot;0&quot;]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>F63100</color>
+                    <item>
+                        <host>Cheetah Miner F1</host>
+                        <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;devs&quot;, &quot;Temperature&quot;, &quot;1&quot;]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <color>2774A4</color>
+                    <item>
+                        <host>Cheetah Miner F1</host>
+                        <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;devs&quot;, &quot;Temperature&quot;, &quot;2&quot;]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>3</sortorder>
+                    <color>F7941D</color>
+                    <item>
+                        <host>Cheetah Miner F1</host>
+                        <key>antminer-zabbix-check-devs[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;devs&quot;, &quot;Temperature&quot;, &quot;3&quot;]</key>
                     </item>
                 </graph_item>
             </graph_items>
