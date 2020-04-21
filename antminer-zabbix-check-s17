@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#-#/usr/bin/bitcoin-cli -rpcuser=user -rpcpassword=password -rpcport=8332 getblockchaininfo
+#-#/usr/local/bin/bitcoin-cli -rpcuser=user -rpcpassword=password -rpcport=8332 getblockchaininfo
+
+set -o errexit
+set -o nounset
+
+ADDRESS=$1
+PORT=$2
+CGMINER_COMMAND=$3
+
+# https://github.com/ckolivas/cgminer/blob/master/API-README
+
+COMMAND="{\"command\":\"$CGMINER_COMMAND\"}"
+RET=`echo -n $COMMAND | nc $ADDRESS $PORT | sed 's/}{/},{/' | sed 's/\x0//g'`
+
+# "S" -- Success
+#-#echo $RET | jq '.STATUS[0].STATUS' | grep -q 'S'
+
+#-#echo $RET | jq ".${CGMINER_COMMAND^^}[1][\"${ITEM}\"]"
+echo $RET
+#-#antminer-zabbix-check-s17 10.10.110.38 4028 stats|jq '.STATS[0].Type'
+#-#./antminer-zabbix-check-s17 10.10.121.0 4028 pools|jq '.POOLS[0].User'
+
