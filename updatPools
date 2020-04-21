@@ -1,0 +1,49 @@
+#!/bin/sh
+
+set -o errexit
+set -o nounset
+######################################################
+LC_COLLATE=''
+urlencode() {
+    # urlencode <string>
+    old_lang=$LANG
+    LANG=C
+    old_lc_collate=$LC_COLLATE
+    LC_COLLATE=C
+    local length="${#1}"
+    for (( i = 0; i < length; i++ )); do
+        local c="${1:i:1}"
+        case $c in
+            [a-zA-Z0-9.~_-]) printf "$c" ;;
+            *) printf '%%%02X' "'$c" ;;
+        esac
+    done
+    LANG=$old_lang
+    LC_COLLATE=$old_lc_collate
+}
+
+#urlencode "$1"
+####################################################
+ADDRESS=$1
+PORT=$2
+username=manager
+password=manager
+
+Pool1=stratum+tcp://sha256asicboost.eu.nicehash.com:3368
+Pool2=stratum+tcp://sha256asicboost.hk.nicehash.com:3368
+Pool3=stratum+tcp://sha256asicboost.jp.nicehash.com:3368
+UserName1=$3
+Password1=$4
+
+#jq -nr --arg v "my shell string" '$v|@uri'
+
+Pool1=$(urlencode $Pool1)
+Pool2=$(urlencode $Pool2)
+Pool3=$(urlencode $Pool3)
+
+jwt=`curl -s --referer http://$ADDRESS:$PORT/login  -X POST -H 'Accept: application/json, text/plain, */*' -H 'Content-Type: application/x-www-form-urlencoded' --data "username=${username}&password=${password}" http://$ADDRESS:$PORT/api/auth|jq '.jwt'|sed 's/\"//g'`
+
+RET=$(curl -s "http://$ADDRESS:$PORT/api/updatePools" \-H "User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0" \-H "Accept: application/json, text/plain, */*" \-H "Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3" \--compressed -H "Content-Type: application/x-www-form-urlencoded" \-H "Authorization: Bearer $jwt" \-H "Origin: http://$ADDRESS" \-H "Connection: keep-alive" \-H "Referer: http://$ADDRESS/pool-settings" \-H "Cookie: JSESSIONID=1kp204briyt47193d5z1mjxfd4" \
+--data "Pool1=$Pool1&UserName1=$UserName1&Password1=x&Pool2=$Pool2&UserName2=$UserName1&Password2=x&Pool3=$Pool3&UserName3=$UserName1&Password3=x")
+echo $RET
+#-#./updatePools.sh 10.10.151.52 80 updatPools
