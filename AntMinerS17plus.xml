@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>4.4</version>
+    <date>2020-04-20T10:52:30Z</date>
+    <groups>
+        <group>
+            <name>Angarsk</name>
+        </group>
+        <group>
+            <name>AntMiners-Office</name>
+        </group>
+        <group>
+            <name>Antminer S17+ Angarsk</name>
+        </group>
+        <group>
+            <name>Karluk: Kont2</name>
+        </group>
+        <group>
+            <name>Mining</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>AntMiner S17plus</template>
+            <name>AntMiner S17plus</name>
+            <groups>
+                <group>
+                    <name>Angarsk</name>
+                </group>
+                <group>
+                    <name>AntMiners-Office</name>
+                </group>
+                <group>
+                    <name>Antminer S17+ Angarsk</name>
+                </group>
+                <group>
+                    <name>Karluk: Kont2</name>
+                </group>
+                <group>
+                    <name>Mining</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>cgminer</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>User pools</name>
+                    <type>EXTERNAL</type>
+                    <key>antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;pools&quot;]</key>
+                    <delay>2m</delay>
+                    <history>10d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <description>название первого worker</description>
+                    <inventory_link>NAME</inventory_link>
+                    <applications>
+                        <application>
+                            <name>cgminer</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.POOLS[0].User</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Fan1</name>
+                    <type>EXTERNAL</type>
+                    <key>antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, fan1]</key>
+                    <delay>2m</delay>
+                    <history>10d</history>
+                    <trends>10d</trends>
+                    <units>rpm</units>
+                    <description>Скорость вращения вентилятора 1</description>
+                    <applications>
+                        <application>
+                            <name>cgminer</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.STATS[1].fan1</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Fan2</name>
+                    <type>EXTERNAL</type>
+                    <key>antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, fan2]</key>
+                    <delay>2m</delay>
+                    <history>10d</history>
+                    <trends>10d</trends>
+                    <units>rpm</units>
+                    <description>Скорость вращения вентилятора 2</description>
+                    <applications>
+                        <application>
+                            <name>cgminer</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.STATS[1].fan2</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Fan3</name>
+                    <type>EXTERNAL</type>
+                    <key>antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, fan3]</key>
+                    <delay>2m</delay>
+                    <history>10d</history>
+                    <trends>10d</trends>
+                    <units>rpm</units>
+                    <description>Скорость вращения вентилятора 3</description>
+                    <applications>
+                        <application>
+                            <name>cgminer</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.STATS[1].fan3</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Fan4</name>
+                    <type>EXTERNAL</type>
+                    <key>antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, fan4]</key>
+                    <delay>2m</delay>
+                    <history>10d</history>
+                    <trends>10d</trends>
+                    <units>rpm</units>
+                    <description>Скорость вращения вентилятора 4</description>
+                    <applications>
+                        <application>
+                            <name>cgminer</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.STATS[1].fan4</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Temp chip3</name>
+                    <type>EXTERNAL</type>
+                    <key>antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot; ]</key>
+                    <delay>2m</delay>
+                    <history>10d</history>
+                    <trends>10d</trends>
+                    <units>°C</units>
+                    <description>Температура чипа 3</description>
+                    <applications>
+                        <application>
+                            <name>cgminer</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$..STATS[1].temp3_2</params>
+                        </step>
+                        <step>
+                            <type>REGEX</type>
+                            <params>\[(.*)\]
+\1</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Temp chip2</name>
+                    <type>EXTERNAL</type>
+                    <key>antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;,&quot;{$HOST.PORT}&quot;, &quot;stats&quot;]</key>
+                    <delay>2m</delay>
+                    <history>10d</history>
+                    <trends>10d</trends>
+                    <units>°C</units>
+                    <description>Температура чипа 2</description>
+                    <applications>
+                        <application>
+                            <name>cgminer</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.STATS[1].temp2_2</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>TH/s (AV) GHS av</name>
+                    <type>EXTERNAL</type>
+                    <key>antminer-zabbix-check-s17[ &quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;summary&quot;, &quot;GHS av&quot; ]</key>
+                    <delay>2m</delay>
+                    <history>10d</history>
+                    <trends>10d</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>TH/s</units>
+                    <description>Real Th/s!</description>
+                    <applications>
+                        <application>
+                            <name>cgminer</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.SUMMARY[0].[&quot;GHS av&quot;]</params>
+                        </step>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.001</params>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(5m)}&lt;66</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>{last(5m)}&gt;66</recovery_expression>
+                            <name>Низкая скорость хэширования на {HOST.NAME}</name>
+                            <priority>WARNING</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>TH/s (RT)</name>
+                    <type>EXTERNAL</type>
+                    <key>antminer-zabbix-check-s17[ &quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;summary&quot; ]</key>
+                    <delay>2m</delay>
+                    <history>10d</history>
+                    <trends>10d</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>TH/s</units>
+                    <description>Real Th/s!</description>
+                    <applications>
+                        <application>
+                            <name>cgminer</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.SUMMARY[0].[&quot;GHS 5s&quot;]</params>
+                        </step>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.001</params>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <expression>{nodata(15m)}=1</expression>
+                            <name>Недоступна информация о хэшрэйте на {HOST.NAME}</name>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                        <trigger>
+                            <expression>{last(5m)}&lt;50</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>{last(5m)}&gt;50</recovery_expression>
+                            <name>Очень низкая скорость хэширования на {HOST.NAME}</name>
+                            <priority>DISASTER</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Chip work chain 1</name>
+                    <type>EXTERNAL</type>
+                    <key>antminer-zabbix-check-s17[{HOST.CONN}, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;]</key>
+                    <delay>2m</delay>
+                    <history>10d</history>
+                    <trends>10d</trends>
+                    <description>Количество чипов на первой плате</description>
+                    <applications>
+                        <application>
+                            <name>cgminer</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.STATS[1].chain_acn1</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Temp chip1</name>
+                    <type>EXTERNAL</type>
+                    <key>antminer-zabbix-check-s17[{HOST.CONN}, &quot;{$HOST.PORT}&quot;, stats]</key>
+                    <delay>2m</delay>
+                    <history>10d</history>
+                    <trends>10d</trends>
+                    <units>°C</units>
+                    <description>Температура чипа 1</description>
+                    <applications>
+                        <application>
+                            <name>cgminer</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$..STATS[1].temp2</params>
+                        </step>
+                        <step>
+                            <type>REGEX</type>
+                            <params>\[(.*)\]
+\1</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Chip work chain 3</name>
+                    <type>EXTERNAL</type>
+                    <key>antminer-zabbix-check-s17[{HOST.CONN},{$HOST.PORT}, &quot;stats&quot;]</key>
+                    <delay>2m</delay>
+                    <history>10d</history>
+                    <trends>10d</trends>
+                    <description>Количество чипов на третьей плате</description>
+                    <applications>
+                        <application>
+                            <name>cgminer</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.STATS[1].chain_acn3</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Chip work chain 2</name>
+                    <type>EXTERNAL</type>
+                    <key>antminer-zabbix-check-s17[{HOST.CONN}, {$HOST.PORT}, &quot;stats&quot;]</key>
+                    <delay>2m</delay>
+                    <history>10d</history>
+                    <trends>10d</trends>
+                    <description>Количество чипов на второй плате</description>
+                    <applications>
+                        <application>
+                            <name>cgminer</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.STATS[1].chain_acn2</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Модель</name>
+                    <type>EXTERNAL</type>
+                    <key>antminer-zabbix-check-s17[{HOST.CONN}, {$HOST.PORT}, version]</key>
+                    <delay>2m</delay>
+                    <history>10d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <description>Модель асика</description>
+                    <inventory_link>MODEL</inventory_link>
+                    <applications>
+                        <application>
+                            <name>cgminer</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.VERSION[0].Type</params>
+                        </step>
+                    </preprocessing>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$HOST.PORT}</macro>
+                    <value>4028</value>
+                </macro>
+            </macros>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{AntMiner S17plus:antminer-zabbix-check-s17[{HOST.CONN}, &quot;{$HOST.PORT}&quot;, stats].last(3)}&gt;90 or {AntMiner S17plus:antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;,&quot;{$HOST.PORT}&quot;, &quot;stats&quot;].last(3)}&gt;90 or {AntMiner S17plus:antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot; ].last(3)}&gt;90</expression>
+            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+            <recovery_expression>{AntMiner S17plus:antminer-zabbix-check-s17[{HOST.CONN}, &quot;{$HOST.PORT}&quot;, stats].max(5m)}&lt;90 and {AntMiner S17plus:antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;,&quot;{$HOST.PORT}&quot;, &quot;stats&quot;].max(5m)}&lt;90 and {AntMiner S17plus:antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot; ].max(5m)}&lt;90</recovery_expression>
+            <name>Высокая температура на {HOST.NAME}</name>
+            <priority>DISASTER</priority>
+        </trigger>
+        <trigger>
+            <expression>{AntMiner S17plus:antminer-zabbix-check-s17[{HOST.CONN}, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;].last(3)}&lt;65 or {AntMiner S17plus:antminer-zabbix-check-s17[{HOST.CONN}, {$HOST.PORT}, &quot;stats&quot;].last(3)}&lt;65 or {AntMiner S17plus:antminer-zabbix-check-s17[{HOST.CONN},{$HOST.PORT}, &quot;stats&quot;].last(3)}&lt;65</expression>
+            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+            <recovery_expression>{AntMiner S17plus:antminer-zabbix-check-s17[{HOST.CONN}, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;].max(5m)}=65 and {AntMiner S17plus:antminer-zabbix-check-s17[{HOST.CONN}, {$HOST.PORT}, &quot;stats&quot;].max(5m)}=65 and {AntMiner S17plus:antminer-zabbix-check-s17[{HOST.CONN},{$HOST.PORT}, &quot;stats&quot;].max(5m)}=65</recovery_expression>
+            <name>Неисправны чипы на {HOST.NAME}</name>
+            <priority>INFO</priority>
+        </trigger>
+        <trigger>
+            <expression>{AntMiner S17plus:antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, fan1].last(3)}&lt;1200 or {AntMiner S17plus:antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, fan2].last(3)}&lt;1200 or&#13;
+{AntMiner S17plus:antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, fan3].last(3)}&lt;1500 or&#13;
+{AntMiner S17plus:antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, fan4].last(3)}&lt;1500</expression>
+            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+            <recovery_expression>{AntMiner S17plus:antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, fan1].max(5m)}&gt;1200 and {AntMiner S17plus:antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, fan2].max(5m)}&gt;1200 and&#13;
+{AntMiner S17plus:antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, fan3].max(5m)}&gt;1500 and&#13;
+{AntMiner S17plus:antminer-zabbix-check-s17[&quot;{HOST.CONN}&quot;, &quot;{$HOST.PORT}&quot;, &quot;stats&quot;, fan4].max(5m)}&gt;1500</recovery_expression>
+            <name>Низкая скорость оборотов вентиляторов на {HOST.NAME}</name>
+            <priority>AVERAGE</priority>
+        </trigger>
+    </triggers>
+</zabbix_export>
